@@ -22,14 +22,14 @@ app.post("/send-email", async (req, res) => {
     // Extraer los parámetros del cuerpo de la solicitud
     const { subject, html, to } = req.body;
 
-    // Configurar el transporte SMTP usando nodemailer y las credenciales de Mandrill
+    // Configurar el transporte SMTP usando nodemailer y las credenciales de SES
     const transporter = nodemailer.createTransport({
       host: "email-smtp.us-east-1.amazonaws.com",
       port: 587,
       secure: false,
       auth: {
-        user: process.env.MANDRILL_USER,
-        pass: process.env.MANDRILL_API_KEY,
+        user: process.env.SES_USER,
+        pass: process.env.SES_API_KEY,
       },
     });
 
